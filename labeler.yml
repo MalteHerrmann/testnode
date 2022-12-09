@@ -1,0 +1,16 @@
+"C:FS":
+  - fs/*
+"C:Node":
+  - node/*
+"C:UI":
+  - ui/*
+"Type: Build":
+  - Makefile
+  - Dockerfile
+  - scripts/*
+"Type: CI":
+  - .github/**/*.yml
+  - .golangci.yml
+"Type: Tests":
+  - tests/**/*
+  - /**/*_test.go
