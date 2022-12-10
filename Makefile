@@ -22,6 +22,12 @@ go.sum: go.mod
 	go mod tidy
 
 # ------------------
+# Format
+#
+format:
+	@gofumpt -l -w .
+
+# ------------------
 # Testing
 #
 PACKAGES_UNIT=$(shell go list ./...)
