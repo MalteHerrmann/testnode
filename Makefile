@@ -22,14 +22,23 @@ go.sum: go.mod
 	go mod tidy
 
 # ------------------
+# Format
+#
+format:
+	@gofumpt -l -w .
+
+# ------------------
 # Testing
 #
 PACKAGES_UNIT=$(shell go list ./...)
-TEST_TARGETS := test-unit
+TEST_TARGETS := test-unit test-unit-cover
 
 # Unit tests without coverage report
 test-unit: ARGS=-timeout=1m -race
 test-unit: TEST_PACKAGES=$(PACKAGES_UNIT)
+
+test-unit-cover: ARGS=-timeout=15m -race -coverprofile=coverage.txt -covermode=atomic
+test-unit-cover: TEST_PACKAGES=$(PACKAGES_UNIT)
 
 $(TEST_TARGETS): run-tests
 run-tests:
