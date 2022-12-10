@@ -2,7 +2,7 @@
 // which is used in the testnode tool.
 package node
 
-var DEFAULT_NAMES = []string{"dev0", "dev1", "dev2"}
+var DefaultNames = []string{"dev0", "dev1", "dev2"}
 
 // EvmosNode is the implementation of an Evmos node for the
 // testnode tool.
@@ -20,9 +20,9 @@ type EvmosNode struct {
 // NewEvmosNode creates a new EvmosNode instance and populates it with
 // the given attributes.
 func NewEvmosNode(url string, evmPort int) *EvmosNode {
-	var accounts []Account
+	var accounts []Account //nolint:prealloc
 
-	for _, name := range DEFAULT_NAMES {
+	for _, name := range DefaultNames {
 		newAcc := NewAccount(name)
 		accounts = append(accounts, newAcc)
 	}
